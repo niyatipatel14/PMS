@@ -19,7 +19,6 @@ const getUserList = async function () {
 }
 // adding the user
 const signUp = async function (req) {
-  console.log("user", req.body)
   const responseObj = { status: "", message: "", result: [] };
   const userObj = {
     firstName: req.body.firstName,
@@ -34,7 +33,6 @@ const signUp = async function (req) {
   }
   return await models.Users.create(userObj)
     .then((data) => {
-      console.log(data, "data")
       responseObj.status = "Success";
       responseObj.message = "User Added Sucessfully";
       responseObj.result = data;
