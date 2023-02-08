@@ -1,54 +1,41 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="text-center">
-                    <form>
-                        <div class="login-container">
-                            <div class="login-content">
-                                <mat-toolbar class="login-toolbar" color="primary">Register</mat-toolbar>
-                                
-                                <form>
-                                    
-                                    <mat-icon matPrefix>person_outline</mat-icon>
-                                    <input autofocus type="text" matInput placeholder="FirstName"
-                                        formControlName="name">
-                                    
-                                    <br>
-                                    <mat-icon matPrefix>lock_outline</mat-icon>
-                                    <input type="password" autocomplete="false" matInput placeholder="LastName"
-                                        formControlName="name">
-                                    <br>
-                                    <mat-icon matPrefix>email_outline</mat-icon>
-                                    <input type="password" autocomplete="false" matInput placeholder="Email"
-                                        formControlName="email">
-                                    <br>
-                                    <!-- <mat-icon matPrefix>phone_outline</mat-icon>
-                                    <input type="password" autocomplete="false" matInput placeholder="ContactNumber"
-                                        formControlName="number">
-                                    <br> -->
-                                    <div>
-                                        <mat-form-field appearance="fill">
-                                          <mat-label>Phone number</mat-label>
-                                         
-                                          <mat-icon matSuffix>phone</mat-icon>
-                                          <mat-hint>Include area code</mat-hint>
-                                        </mat-form-field>
-                                      </div>
-                                    <mat-icon matPrefix>password_outline</mat-icon>
-                                    <input type="password" autocomplete="false" matInput placeholder="Password"
-                                        formControlName="password">
-                                        
-                                    <br>
-                                    <button class="lbtn" type="submit" mat-raised-button color="primary">LOGIN</button>
-                                
-                                </form>
-                                <br>
-                                <span style="color: aliceblue;"> If You don't have a account yet please <a style="color: aliceblue;" routerLink='/register'>REGISTER
-                                        HERE</a></span>
-                                    </div>
-                        </div>
-                    
-                    </form>
-                    
-                </div>
+<div class="registration-container">
+    <div class="registration-content">
+        <mat-toolbar color=”primary” class="register-toolbar">
+            <span>Registration</span>
+        </mat-toolbar>
+        <mat-card>
+            <mat-card-content>
+                <form>
+                    <mat-form-field appearance="outline" class="custom-width">
+                        <mat-icon matPrefix>person_outline</mat-icon>
+                        <input matInput placeholder="FirstName*" type="text">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="outline" class="custom-width">
+                        <mat-icon matPrefix>person_outline</mat-icon>
+                        <input matInput placeholder="LastName*" type="text">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="custom-width">
+                        <mat-icon matPrefix>email</mat-icon>
+                        <input matInput placeholder="Email*" type="email">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="custom-width">
+                        <mat-icon matPrefix> call</mat-icon>
+                        <input matInput placeholder="CotactNumber*" type="number">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="custom-width">
+                        <mat-icon matPrefix>lock_outline</mat-icon>
+                        <input matInput placeholder="Password*" type="password">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="custom-width">
+                        <mat-icon matPrefix>lock_outline</mat-icon>
+                        <input matInput placeholder="Confirm Password*" type="password">
+                    </mat-form-field>
+                    <div>
+                        <button mat-raised-button color="primary">Submit</button>
+                    </div>
+                </form>
+            </mat-card-content>    
+        </mat-card>
+    </div>
+</div>
