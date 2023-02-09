@@ -19,6 +19,7 @@ const getUserList = async function () {
 }
 // adding the user
 const signUp = async function (req) {
+  console.log("user", req.body)
   const responseObj = { status: "", message: "", result: [] };
   const userObj = {
     firstName: req.body.firstName,
@@ -26,15 +27,16 @@ const signUp = async function (req) {
     email: req.body.email,
     contactNumber: req.body.contactNumber,
     isDeleted: req.body.isDeleted,
-    password: bcrypt.hashSync(req.body.password,8),
+    password: req.body.password,
     authtoken: req.body.authtoken,
     screenAccess: req.body.screenAcc
-
+  
   }
   return await models.Users.create(userObj)
     .then((data) => {
+      console.log(data, "data")
       responseObj.status = "Success";
-      responseObj.message = "User Added Sucessfully";
+      responseObj.message = "User Created Sucessfully";
       responseObj.result = data;
       return responseObj;
     })
@@ -77,21 +79,23 @@ const updateUser = async function (req) {
     })
 }
   
-//login 
+// //login 
 const loginUser = async function (req) {
   const responseObj = { status: "", message: "", result: [] };
-  console.log(userObj, "data")
-  return await models.Users.findOne({
-    where:{
-      email:req.body.email,
+  const userObj = {
+    email: req.body.email,
+    password: req.body.password
+  }
+  return await models.Users.findOne( {
+    where: {
+      email: req.body.email,
+      password: req.body.password
     }
   })
-    .then((user) => {
-      console.log(user, "data")
-      // if( )
-      
-      responseObj.status = "Failed";
-      responseObj.message = "User not found";
+    .then((data) => {
+      console.log(data, "data")
+      responseObj.status = "Success";
+      responseObj.message = "User Added Sucessfully";
       responseObj.result = data;
       return responseObj;
     })
@@ -101,6 +105,5 @@ const loginUser = async function (req) {
       responseObj.result = data;
     })
 }
-
 
 module.exports = { getUserList, signUp, updateUser,loginUser };
