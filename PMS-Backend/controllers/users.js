@@ -79,8 +79,13 @@ const updateUser = async function (req) {
     })
 }
   
+<<<<<<< Updated upstream
 // //login 
 const loginUser = async function (req) {
+=======
+//login 
+const  loginUser= async function (req) {
+>>>>>>> Stashed changes
   const responseObj = { status: "", message: "", result: [] };
   const userObj = {
     email: req.body.email,
@@ -89,7 +94,11 @@ const loginUser = async function (req) {
   return await models.Users.findOne( {
     where: {
       email: req.body.email,
+<<<<<<< Updated upstream
       password: req.body.password
+=======
+    password: req.body.password
+>>>>>>> Stashed changes
     }
   })
     .then((data) => {
@@ -106,4 +115,9 @@ const loginUser = async function (req) {
     })
 }
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 module.exports = { getUserList, signUp, updateUser,loginUser };
