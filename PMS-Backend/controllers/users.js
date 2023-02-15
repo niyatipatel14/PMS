@@ -6,7 +6,6 @@ const getUserList = async function () {
   const responseObj = { status: "", message: "", result: [] };
   return await models.Users.findAll()
     .then((data) => {
-      console.log(data, "data")
       responseObj.status = "Success";
       responseObj.message = "Userlist Got It Sucessfully";
       responseObj.result = data;
@@ -19,7 +18,6 @@ const getUserList = async function () {
 }
 // adding the user
 const signUp = async function (req) {
-  console.log("user", req.body)
   const responseObj = { status: "", message: "", result: [] };
   const userObj = {
     firstName: req.body.firstName,
@@ -34,7 +32,6 @@ const signUp = async function (req) {
   }
   return await models.Users.create(userObj)
     .then((data) => {
-      console.log(data, "data")
       responseObj.status = "Success";
       responseObj.message = "User Added Sucessfully";
       responseObj.result = data;
@@ -59,14 +56,12 @@ const updateUser = async function (req) {
     authtoken: req.body.authtoken,
     screenAccess: req.body.screenAccess
   }
-  console.log(userObj, "data")
   return await models.Users.update(userObj, {
     where: {
       id: req.body.id
     }
   })
     .then((data) => {
-      console.log(data, "data")
       responseObj.status = "Success";
       responseObj.message = "User Update Sucessfully";
       responseObj.result = data;
