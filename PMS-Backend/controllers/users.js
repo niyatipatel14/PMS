@@ -27,16 +27,16 @@ const signUp = async function (req) {
     email: req.body.email,
     contactNumber: req.body.contactNumber,
     isDeleted: req.body.isDeleted,
-    password: req.body.password,
+    password: bcrypt.hashSync(req.body.password,8),
     authtoken: req.body.authtoken,
     screenAccess: req.body.screenAcc
-  
+
   }
   return await models.Users.create(userObj)
     .then((data) => {
       console.log(data, "data")
       responseObj.status = "Success";
-      responseObj.message = "User Created Sucessfully";
+      responseObj.message = "User Added Sucessfully";
       responseObj.result = data;
       return responseObj;
     })
@@ -79,13 +79,8 @@ const updateUser = async function (req) {
     })
 }
   
-<<<<<<< Updated upstream
-// //login 
-const loginUser = async function (req) {
-=======
 //login 
 const  loginUser= async function (req) {
->>>>>>> Stashed changes
   const responseObj = { status: "", message: "", result: [] };
   const userObj = {
     email: req.body.email,
@@ -94,11 +89,7 @@ const  loginUser= async function (req) {
   return await models.Users.findOne( {
     where: {
       email: req.body.email,
-<<<<<<< Updated upstream
-      password: req.body.password
-=======
     password: req.body.password
->>>>>>> Stashed changes
     }
   })
     .then((data) => {
@@ -115,9 +106,6 @@ const  loginUser= async function (req) {
     })
 }
 
-<<<<<<< Updated upstream
-=======
 
 
->>>>>>> Stashed changes
 module.exports = { getUserList, signUp, updateUser,loginUser };
