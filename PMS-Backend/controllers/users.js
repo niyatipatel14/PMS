@@ -99,6 +99,7 @@ const  loginUser= async function (req) {
       responseObj.message = err.message;
       responseObj.result = data;
     })
+    
 }
 
 
