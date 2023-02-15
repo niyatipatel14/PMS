@@ -39,7 +39,7 @@
                         <mat-error *ngIf="hasError('confirmPassword', 'required')"> Confirm Password is required</mat-error>
                     </mat-form-field>
                     <div>
-                        <button mat-raised-button color="primary" >Submit</button>
+                        <button mat-raised-button color="primary" [disabled]="!registerForm.valid">Submit</button>
                     </div>
                 </form>
             </mat-card-content>    
