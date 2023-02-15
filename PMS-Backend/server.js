@@ -29,6 +29,7 @@ app.use('/api', require('./routes/api'));
 
 const port = process.env.PORT ;
 server.listen(port, () => {
+console.log("Server started on port 3000...");
 });
 server.setTimeout(5000000);
 
