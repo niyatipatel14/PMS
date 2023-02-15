@@ -5,34 +5,41 @@
         </mat-toolbar>
         <mat-card>
             <mat-card-content>
-                <form>
+                <form [formGroup]="registerForm" (ngSubmit)="signUp()">
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix>person_outline</mat-icon>
-                        <input matInput placeholder="FirstName*" type="text">
+                        <input matInput placeholder="Enter First Name*" type="text" formControlName="firstName">
+                        <mat-error *ngIf="hasError('firstName', 'required')">First Name is required</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix>person_outline</mat-icon>
-                        <input matInput placeholder="LastName*" type="text">
+                        <input matInput placeholder="Enter Last Name*" type="text" formControlName="lastName">
+                        <mat-error *ngIf="hasError('lastName','required')">Last Name is required</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix>email</mat-icon>
-                        <input matInput placeholder="Email*" type="email">
+                        <input matInput placeholder="Enter Email*" type="text" formControlName="email">
+                        <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+                        <mat-error *ngIf="hasError('email', 'pattern')">Email is invalid</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix> call</mat-icon>
-                        <input matInput placeholder="CotactNumber*" type="number">
+                        <input matInput placeholder="Enter ContactNumber*" type="text" formControlName="contactNumber">
+                        <mat-error *ngIf="hasError('contactNumber', 'required')">ContactNumber is required</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix>lock_outline</mat-icon>
-                        <input matInput placeholder="Password*" type="password">
+                        <input matInput placeholder="Enter Password*" type="text" formControlName="password">
+                        <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix>lock_outline</mat-icon>
-                        <input matInput placeholder="Confirm Password*" type="password">
+                        <input matInput placeholder="Enter Confirm Password*" type="text" formControlName="confirmPassword">
+                        <mat-error *ngIf="hasError('confirmPassword', 'required')"> Confirm Password is required</mat-error>
                     </mat-form-field>
                     <div>
-                        <button mat-raised-button color="primary">Submit</button>
+                        <button mat-raised-button color="primary" >Submit</button>
                     </div>
                 </form>
             </mat-card-content>    
