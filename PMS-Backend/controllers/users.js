@@ -75,18 +75,22 @@ const updateUser = async function (req) {
 }
   
 //login 
-const loginUser = async function (req) {
+const  loginUser= async function (req) {
   const responseObj = { status: "", message: "", result: [] };
-  return await models.Users.findOne({
-    where:{
-      email:req.body.email,
+  const userObj = {
+    email: req.body.email,
+    password: req.body.password
+  }
+  return await models.Users.findOne( {
+    where: {
+      email: req.body.email,
+    password: req.body.password
     }
   })
-    .then((user) => {
-      // if( )
-      
-      responseObj.status = "Failed";
-      responseObj.message = "User not found";
+    .then((data) => {
+      console.log(data, "data")
+      responseObj.status = "Success";
+      responseObj.message = "User Added Sucessfully";
       responseObj.result = data;
       return responseObj;
     })
@@ -95,7 +99,9 @@ const loginUser = async function (req) {
       responseObj.message = err.message;
       responseObj.result = data;
     })
+    
 }
+
 
 
 module.exports = { getUserList, signUp, updateUser,loginUser };

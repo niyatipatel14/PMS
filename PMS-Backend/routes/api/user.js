@@ -19,6 +19,11 @@ route.post("/login", async (req, res) => {
   res.send(responseObj);
 })
 
+
+// route.post("/forget", async (req, res) => {
+//   const responseObj = await forGet(req);
+//   res.send(responseObj);
+// })
 module.exports = route;
 
 
