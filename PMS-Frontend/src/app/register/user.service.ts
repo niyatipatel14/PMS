@@ -11,4 +11,7 @@ export class UserService {
    signUp(data:any): Observable<any> {
     return this.http.post(environment.urlAddress + 'api/user/signUp',data);
   }
+  login(data:any):Observable<any>{
+    return this.http.post(environment.urlAddress + 'api/user/signUp',data);
+  }
 }
