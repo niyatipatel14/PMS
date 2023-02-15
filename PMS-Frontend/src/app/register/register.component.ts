@@ -37,13 +37,13 @@ export class RegisterComponent implements OnInit {
       contactNumber: this.registerForm.value.contactNumber,
       password: this.registerForm.value.password
     }
-    if (this.registerForm.valid) {
-      this.userservice.signUp(userData).subscribe((data) => {
-        if (data && data.status == "Success") {
-          this.route.navigate(['login'])
-        }
-      })
-    }
+    // if (this.registerForm.valid) {
+    //   this.userservice.signUp(userData).subscribe((data) => {
+    //     if (data && data.status == "Success") {
+    //       this.route.navigate(['login'])
+    //     }
+    //   })
+    // }
   }
 }
 
