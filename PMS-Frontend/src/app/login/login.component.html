@@ -1,38 +1,27 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="text-center">
-
-          <div class="login-container">
-            <div class="login-content">
-              <mat-toolbar class="login-toolbar" color="primary">Login</mat-toolbar>
-
+<div class="login-container">
+  <div class="login-content">
+      <mat-toolbar color=”primary” class="login-toolbar">
+          <span>Login</span>
+      </mat-toolbar>
+      <mat-card>
+          <mat-card-content>
               <form>
-
-
-                <mat-icon matPrefix>person_outline</mat-icon>
-                <input autofocus type="text" matInput placeholder="Username" formControlName="email">
-
-                <br>
-
-                <mat-icon matPrefix>lock_outline</mat-icon>
-                <input type="password" autocomplete="false" matInput placeholder="Password" formControlName="password">
-                <br>
-
-                <button type="submit" mat-raised-button color="primary">LOGIN</button>
+                  <mat-form-field appearance="outline" class="custom-width">
+                      <mat-icon matPrefix>person_outline</mat-icon>
+                      <input matInput placeholder="Username*" type="text">
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field appearance="outline" class="custom-width">
+                      <mat-icon matPrefix>lock_outline</mat-icon>
+                      <input matInput placeholder="Password*" type="password">
+                  </mat-form-field>
+  
+                  <div>
+                      <button mat-raised-button color="primary">Login</button>
+                  </div>
               </form>
+          </mat-card-content>
 
-              <br>
-              <span> If You don't have a account yet please <a routerLink='/register'>REGISTER HERE</a></span> -->
-
-
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      </mat-card>
   </div>
 </div>
