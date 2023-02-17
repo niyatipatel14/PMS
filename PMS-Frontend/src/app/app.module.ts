@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotComponent } from './forgot/forgot.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ForgotComponent } from './forgot/forgot.component';
     LoginComponent,
     RegisterComponent,
     ForgotComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
