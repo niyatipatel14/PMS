@@ -15,6 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotComponent } from './forgot/forgot.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     RegisterComponent,
     ForgotComponent,
-    NavbarComponent
+    NavbarComponent,
+    DashboardComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

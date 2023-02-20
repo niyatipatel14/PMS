@@ -16,12 +16,14 @@
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix>lock_outline</mat-icon>
                         <input matInput placeholder="Enter Password*" type="text" formControlName="password">
+                        <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
                     </mat-form-field>
                     <div>
                         <button mat-raised-button color="primary">Login</button>
                     </div>
                 </form>
+                <button mat-raised-button color="primary" routerLink="/forgot" class="forgot-btn">forgotPassword</button>
             </mat-card-content>
-        </mat-card>
+        </mat-card>  
     </div>
 </div>
