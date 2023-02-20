@@ -20,15 +20,8 @@ constructor(private formBuilder: FormBuilder, private userservice:UserService) {
       },
     );
   }
-  onSubmit(loginForm: any, second: any) {
-    console.log("inside onsubmit", loginForm, second);
-  }
   hasError(controlName: string, errorName: string) {
     return this.loginForm.controls[controlName].hasError(errorName);
-  }
-  checkValidation(this: any, oninput: string) {
-    const validation = this.loginForm.get(oninput).invalid && (this.loginForm.get(oninput).dirty || this.loginForm.get(oninput).touched)
-    return validation;
   }
   login(){
     const userData={
