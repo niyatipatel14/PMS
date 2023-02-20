@@ -8,9 +8,10 @@ import { UserService } from '../register/user.service';
   styleUrls: ['./forgot.component.scss']
 })
 export class ForgotComponent {
+  email!: string;
   forgotForm!: FormGroup;
   submitted = false;
-f: any;
+  f: any;
 constructor(private formBuilder: FormBuilder, private userservice:UserService) { }
   ngOnInit(): void {
     this.forgotForm = this.formBuilder.group(
