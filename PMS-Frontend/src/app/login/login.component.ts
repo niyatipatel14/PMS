@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../register/user.service';
 @Component({
@@ -11,13 +11,21 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
   f: any;
+  formGroup: FormGroup<{ email: FormControl<string | null>; password: FormControl<string | null>; }> | undefined;
   constructor(private formBuilder: FormBuilder, private userservice: UserService, private route: Router) { }
+  initForm() {
+    this.formGroup = new FormGroup({
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    })
+  }
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
         password: ['', Validators.required],
-        acceptTerms: [false, Validators.required]
+        acceptTerms: [false, Validators.required],
+        this: <any>this.initForm(),
       },
     );
   }
@@ -34,7 +42,6 @@ export class LoginComponent implements OnInit {
       if (data && data.status == "Success") {
         this.route.navigate(['dashboard'])
       }
-      console.log(data, "user dataa")
     })
   }
 }
