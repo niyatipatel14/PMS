@@ -8,7 +8,12 @@ import { environment } from 'src/environments/environment.development';
 })
 export class UserService {
   constructor(private http: HttpClient) { }
-   signUp(data:any): Observable<any> {
-    return this.http.post(environment.urlAddress + 'api/user/signUp',data);
+
+  signUp(data: any): Observable<any> {
+    return this.http.post(environment.urlAddress + 'api/user/signUp', data);
+  }
+  login(data: any): Observable<any> {
+    return this.http.post(environment.urlAddress + 'api/user/login', data)
   }
 }
+

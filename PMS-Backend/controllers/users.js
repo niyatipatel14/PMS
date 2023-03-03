@@ -77,31 +77,26 @@ const updateUser = async function (req) {
 //login 
 const  loginUser= async function (req) {
   const responseObj = { status: "", message: "", result: [] };
-  const userObj = {
-    email: req.body.email,
-    password: req.body.password
-  }
-  const response =  await models.Users.findOne( {
+  const user =  await models.Users.findOne({
     where: {
       email: req.body.email,
-    password: req.body.password
     }
-  })
-    .then((data) => {
-      console.log(data, "data")
-      responseObj.status = "Success";
-      responseObj.message = "User Added Sucessfully";
-      responseObj.result = data;
-      return responseObj;
-    })
-    .catch((err) => {
-      responseObj.status = "Failure";
-      responseObj.message = err.message;
-      responseObj.result = data;
-    })
-  return response; 
+  });
+  const userPassword = req.body.password;
+  if(user){
+    if(userPassword !== user.password){
+      responseObj.status = "failed";
+      responseObj.message = "Invalid Password";
+      return responseObj
+    } 
+    responseObj.message = "User Logged In Successfully";
+    responseObj.status = "Success";
+    return responseObj
+  }else{
+    responseObj.status = "failed";
+    responseObj.message = "User Not Found";
+    return responseObj
+  }
 }
-
-
 
 module.exports = { getUserList, signUp, updateUser,loginUser };
