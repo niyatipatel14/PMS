@@ -10,11 +10,13 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
 f: any;
+  route: any;
 constructor(private formBuilder: FormBuilder, private userservice:UserService) { }
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['', [Validators.required,Validators.email, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+        email: [''
+        , [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
         password: ['', Validators.required],
         acceptTerms: [false, Validators.required]
       },
@@ -28,8 +30,11 @@ constructor(private formBuilder: FormBuilder, private userservice:UserService) {
       email:this.loginForm.value.email,
       password:this.loginForm.value.password
     }
-    this.userservice.login(userData).subscribe((data)=>{
-      console.log(data,"user dataa")
+    this.userservice.login(userData).subscribe((data) => {
+      console.log("userdata", data)
+      if (data && data.status == "Success") {
+        this.route.navigate(['dashboard'])
+      }
     })
   }
 }
