@@ -81,7 +81,7 @@ const  loginUser= async function (req) {
     email: req.body.email,
     password: req.body.password
   }
-  return await models.Users.findOne( {
+  const response =  await models.Users.findOne( {
     where: {
       email: req.body.email,
     password: req.body.password
@@ -99,7 +99,7 @@ const  loginUser= async function (req) {
       responseObj.message = err.message;
       responseObj.result = data;
     })
-    
+  return response; 
 }
 
 
