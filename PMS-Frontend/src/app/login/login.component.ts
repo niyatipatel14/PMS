@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     }
+    console.log(userData,"data")
     this.userservice.login(userData).subscribe((data) => {
       console.log("userdata", data)
       if (data && data.status == "Success") {
