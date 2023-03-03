@@ -25,7 +25,8 @@ const signUp = async function (req) {
     email: req.body.email,
     contactNumber: req.body.contactNumber,
     isDeleted: req.body.isDeleted,
-    password: bcrypt.hashSync(req.body.password,8),
+    // password: bcrypt.hashSync(req.body.password,8),
+    password:req.body.password,
     authtoken: req.body.authtoken,
     screenAccess: req.body.screenAcc
 
