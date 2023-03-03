@@ -81,7 +81,8 @@ const  loginUser= async function (req) {
     email: req.body.email,
     password: req.body.password
   }
-  return await models.Users.findOne( {
+  console.log(userObj)
+  responce =await models.Users.findOne( {
     where: {
       email: req.body.email,
       password: req.body.password
