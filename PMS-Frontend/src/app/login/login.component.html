@@ -7,7 +7,7 @@
             <mat-card-content>
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
                     <mat-form-field appearance="outline" class="custom-width">
-                        <mat-icon matPrefix>person_outline</mat-icon>
+                        <mat-icon matPrefix>email</mat-icon>
                         <input matInput placeholder="Enter Email*" type="text" formControlName="email">
                         <mat-error *ngIf="hasError('email', 'required')">email is required</mat-error>
                         <mat-error *ngIf="hasError('email', 'pattern')">Email is invalid</mat-error>
@@ -15,13 +15,15 @@
                     <br>
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix>lock_outline</mat-icon>
-                        <input matInput placeholder="Enter Password*" type="text" formControlName="password">
+                        <input matInput placeholder="Enter Password*" type="password" formControlName="password">
+                        <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
                     </mat-form-field>
                     <div>
                         <button mat-raised-button color="primary">Login</button>
                     </div>
                 </form>
+                <a routerLink="/forgot" class="forgotpassword">Forgot Password</a>
             </mat-card-content>
-        </mat-card>
+        </mat-card>  
     </div>
 </div>

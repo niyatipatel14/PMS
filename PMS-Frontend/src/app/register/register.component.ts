@@ -37,6 +37,9 @@ export class RegisterComponent implements OnInit {
       contactNumber: this.registerForm.value.contactNumber,
       password: this.registerForm.value.password
     }
+    this.userservice.signUp(userData).subscribe((data)=>{
+      console.log(data,"user dataa")
+    })
     if (this.registerForm.valid) {
       this.userservice.signUp(userData).subscribe((data) => {
         if (data && data.status == "Success") {

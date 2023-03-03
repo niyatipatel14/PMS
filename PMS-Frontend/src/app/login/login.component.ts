@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
-import { UserService } from '../register/user.service'; 
+import { FormBuilder, FormControl, FormGroup, Validators, } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../register/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,34 +10,38 @@ import { UserService } from '../register/user.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
-f: any;
-constructor(private formBuilder: FormBuilder, private userservice:UserService) { }
+  f: any;
+  formGroup: FormGroup<{ email: FormControl<string | null>; password: FormControl<string | null>; }> | undefined;
+  constructor(private formBuilder: FormBuilder, private userservice: UserService, private route: Router) { }
+  initForm() {
+    this.formGroup = new FormGroup({
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    })
+  }
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['', [Validators.required,Validators.email, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+        email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
         password: ['', Validators.required],
-        acceptTerms: [false, Validators.required]
+        acceptTerms: [false, Validators.required],
+        this: <any>this.initForm(),
       },
     );
-  }
-  onSubmit(loginForm: any, second: any) {
-    console.log("inside onsubmit", loginForm, second);
   }
   hasError(controlName: string, errorName: string) {
     return this.loginForm.controls[controlName].hasError(errorName);
   }
-  checkValidation(this: any, oninput: string) {
-    const validation = this.loginForm.get(oninput).invalid && (this.loginForm.get(oninput).dirty || this.loginForm.get(oninput).touched)
-    return validation;
-  }
-  login(){
-    const userData={
-      email:this.loginForm.value.email,
-      password:this.loginForm.value.password
+  login() {
+    const userData = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
     }
-    this.userservice.login(userData).subscribe((data)=>{
-      console.log(data,"user dataa")
+    this.userservice.login(userData).subscribe((data) => {
+      console.log("userdata", data)
+      if (data && data.status == "Success") {
+        this.route.navigate(['dashboard'])
+      }
     })
   }
 }
