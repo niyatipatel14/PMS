@@ -79,6 +79,7 @@ const updateUser = async function (req) {
 const  loginUser= async function (req) {
   console.log(req,"rq")
   const responseObj = { status: "", message: "", result: [] };
+  const token = uniqueKey();
   const user =  await models.Users.findOne({
     where: {
       email: req.body.email,
@@ -101,4 +102,55 @@ const  loginUser= async function (req) {
   }
 }
 
-module.exports = { getUserList, signUp, updateUser,loginUser };
+  
+//forgotPassword
+const  forgotPassword= async function (req) {
+  console.log(req,"rq")
+  const responseObj = { status: "", message: "", result: [] };
+  
+  const user =  await models.Users.findOne({
+    where: {
+      email: req.body.email,
+    }
+  });
+  const token = uniqueKey();
+  const userPassword = req.body.password;
+  if(user){
+    if(userPassword !== user.password){
+      responseObj.status = "failed";
+      responseObj.message = "Invalid Password";
+      return responseObj
+    } 
+    responseObj.message = "Forgotpassword Successfully";
+    responseObj.status = "Success";
+    return responseObj
+  }else{
+    responseObj.status = "failed";
+    responseObj.message = " Not Found";
+    return responseObj
+  }
+}
+// // reset password
+// const resetPassword = async function (req) {
+//   const responseObj = { status: "", message: "", data: [] };
+//   const passwordData = {
+//     password:req.body.password,
+//   };
+//   return await models.Users.update(passwordData, {
+//     where: {
+//       id: req.body.id,
+//     },
+//   })
+//     .then((data) => {
+//       responseObj.data = data;
+//       responseObj.status = "success";
+//       responseObj.message = "Reset Password successfully";
+//       return responseObj;
+//     })
+//     .catch((error) => {
+//       responseObj.status = "failure";
+//       responseObj.message = error.message;
+//     });
+// };
+
+module.exports = { getUserList, signUp, updateUser,loginUser,forgotPassword, };

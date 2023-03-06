@@ -8,6 +8,7 @@ const Users = require("./users");
 const Customers = require("./customers")
 const Properties = require('./properties');
 const Visitedproperties = require('./visitedproperties');
+const forgotpassword=require("./forgotpassword")
 const config = require("../config/database")[env];
 const models = {};
 let sequelize;
@@ -18,7 +19,7 @@ sequelize = new Sequelize(
   config
 );
 const Op = sequelize.Op;
-[Users, Visitedproperties, Properties, Customers].forEach(modelCreator => {
+[Users, Visitedproperties, Properties, Customers,forgotpassword].forEach(modelCreator => {
   const model = modelCreator(sequelize, Sequelize.DataTypes);
   models[model.name] = model;
 });
