@@ -1,5 +1,5 @@
 const route = require("express").Router();
-const { getUserList, signUp, updateUser, loginUser,forgotPassword, } = require("../../controllers/users");
+const { getUserList, signUp, updateUser, loginUser,forgotPassword, resetPassword} = require("../../controllers/users");
 
 route.get("/getUserList", async (req, res) => {
   const responseObj = await getUserList(req);
@@ -21,10 +21,10 @@ route.post("/forgotPassword", async (req, res) => {
   const responseObj = await forgotPassword(req);
   res.send(responseObj);
 })
-// route.post("/resetPassword", async (req, res) => {
-//   const responseObj = await resetPassword(req);
-//   res.send(responseObj);
-// })
+route.post("/resetPassword", async (req, res) => {
+  const responseObj = await resetPassword(req);
+  res.send(responseObj);
+})
 module.exports = route;
 
 
