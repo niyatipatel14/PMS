@@ -1,7 +1,7 @@
-'use strict';
++'use strict';
 const { pendingRecordStatus } = require("../helpers/constant")
 module.exports = function (sequelize, DataTypes) {
-    const customers = sequelize.define('Customers', {
+    const forgotpassword = sequelize.define('forgotpassword', {
        userId:DataTypes.INTEGER,
         email: DataTypes.STRING,
         token:DataTypes.STRING,
@@ -11,5 +11,5 @@ module.exports = function (sequelize, DataTypes) {
         freezeTableName: true,
         tableName: 'forgotpassword'
     });
-    return customers;
+    return forgotpassword ;
 };

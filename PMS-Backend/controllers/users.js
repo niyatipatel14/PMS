@@ -77,7 +77,6 @@ const updateUser = async function (req) {
   
 //login 
 const  loginUser= async function (req) {
-  console.log(req,"rq")
   const responseObj = { status: "", message: "", result: [] };
   const token = uniqueKey();
   const user =  await models.Users.findOne({
