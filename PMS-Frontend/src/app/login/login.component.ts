@@ -37,11 +37,12 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     }
-    this.userservice.login(userData).subscribe((data) => {
-      console.log("userdata", data)
-      if (data && data.status == "Success") {
-        this.route.navigate(['dashboard'])
-      }
-    })
+    if (this.loginForm.valid) {
+      this.userservice.login(userData).subscribe((data) => {
+        if (data && data.status == "Success") {
+          this.route.navigate(['dashboard'])
+        }
+      })
+    }
   }
 }
