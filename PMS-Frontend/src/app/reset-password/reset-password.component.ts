@@ -27,8 +27,5 @@ constructor(private formBuilder: FormBuilder, private userservice:UserService) {
     const userData={
       password: this.resetPasswordForm.value.password
     }
-    this.userservice.login(userData).subscribe((data)=>{
-      console.log(data,"user dataa")
-    })
   }
 }
