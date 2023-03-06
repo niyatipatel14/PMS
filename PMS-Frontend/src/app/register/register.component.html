@@ -25,17 +25,17 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix> call</mat-icon>
-                        <input matInput placeholder="Enter Contact Number*" type="text" formControlName="contactNumber">
+                        <input matInput placeholder="Enter Contact Number*" type="number" formControlName="contactNumber">
                         <mat-error *ngIf="hasError('contactNumber', 'required')">Contact number is required</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix>lock_outline</mat-icon>
-                        <input matInput placeholder="Enter Password*" type="text" formControlName="password">
+                        <input matInput placeholder="Enter Password*" type="password" formControlName="password">
                         <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="custom-width">
                         <mat-icon matPrefix>lock_outline</mat-icon>
-                        <input matInput placeholder="Enter Confirm Password*" type="text" formControlName="confirmPassword">
+                        <input matInput placeholder="Enter Confirm Password*" type="password" formControlName="confirmPassword">
                         <mat-error *ngIf="hasError('confirmPassword', 'required')"> Confirm Password is required</mat-error>
                     </mat-form-field>
                     <div>
