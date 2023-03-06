@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../register/user.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   f: any;
   formGroup: FormGroup<{ email: FormControl<string | null>; password: FormControl<string | null>; }> | undefined;
-  constructor(private formBuilder: FormBuilder, private userservice: UserService, private route: Router) { }
+  constructor(private formBuilder: FormBuilder, private userservice: UserService, private route: Router,private flashmessage:ToastrService) { }
   initForm() {
     this.formGroup = new FormGroup({
       email: new FormControl('', [Validators.required]),
@@ -42,7 +44,13 @@ export class LoginComponent implements OnInit {
         if (data && data.status == "Success") {
           this.route.navigate(['dashboard'])
         }
+        else{
+          this.showError();
+        }
       })
     }
+  }
+  showError() {
+    this.flashmessage.warning('Something went wrong', 'Error');
   }
 }

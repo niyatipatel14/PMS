@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class UserService {
+  resetPassword: any;
   constructor(private http: HttpClient) { }
 
   signUp(data: any): Observable<any> {
