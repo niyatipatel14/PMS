@@ -21,10 +21,10 @@ route.post("/forgotPassword", async (req, res) => {
   const responseObj = await forgotPassword(req);
   res.send(responseObj);
 })
-route.post("/resetPassword", async (req, res) => {
-  const responseObj = await resetPassword(req);
-  res.send(responseObj);
-})
+// route.post("/resetPassword", async (req, res) => {
+//   const responseObj = await resetPassword(req);
+//   res.send(responseObj);
+// })
 module.exports = route;
 
 
