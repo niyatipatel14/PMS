@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../register/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../register/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   f: any;
   formGroup: FormGroup<{ email: FormControl<string | null>; password: FormControl<string | null>; }> | undefined;
-  constructor(private formBuilder: FormBuilder, private userservice: UserService, private route: Router,private flashmessage:ToastrService) { }
+  flashmessage: any;
+  constructor(private formBuilder: FormBuilder, private userservice: UserService, private route: Router,private toastr: ToastrService) { }
   initForm() {
     this.formGroup = new FormGroup({
       email: new FormControl('', [Validators.required]),
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.userservice.login(userData).subscribe((data) => {
         if (data && data.status == "Success") {
+          this.toastr.success('Logged In Successfully', 'Success');
           this.route.navigate(['dashboard'])
         }
         else{
@@ -50,7 +52,7 @@ export class LoginComponent implements OnInit {
       })
     }
   }
-  showError() {
-    this.flashmessage.warning('Something went wrong', 'Error');
-  }
+   showError() {
+     this.toastr.error('Please Enter Correct Credentials', 'Error');
+   }
 }

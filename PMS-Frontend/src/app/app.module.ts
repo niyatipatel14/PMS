@@ -20,6 +20,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ToastrModule } from 'ngx-toastr';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -78,7 +78,7 @@ const updateUser = async function (req) {
 //login 
 const  loginUser= async function (req) {
   const responseObj = { status: "", message: "", result: [] };
-  const token = uniqueKey();
+  // const token = uniqueKey();
   const user =  await models.Users.findOne({
     where: {
       email: req.body.email,
@@ -112,7 +112,7 @@ const  forgotPassword= async function (req) {
       email: req.body.email,
     }
   });
-  const token = uniqueKey();
+  // const token = uniqueKey();
   const userPassword = req.body.password;
   if(user){
     if(userPassword !== user.password){
